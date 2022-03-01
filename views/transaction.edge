@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Transaction</title>
+    <link rel="icon" type="image/x-icon" href="/img/hnet.com-image.ico">
+    <link rel="stylesheet" href="../css/transaction.css">
+
+</head>
+
+<body>
+    <div class="mainscreen">
+        
+        <div class="card">
+            <div class="leftside">
+                <h1>Quick Cash App</h1>
+            </div>
+            <div class="rightside">
+                <form action="/transaction/new" method="POST">
+                    <h2>New Transaction</h2>
+                    <label for="sender">Sender's Name</label>
+                    <input type="text" class="inputbox" name="sender" value="{{firstName}}" readonly />
+                    <label for="receiver">Select Receiver</label>
+                    <select class="inputbox" name="receiver" id="receiver" required>
+                        <option value="">Select Name</option>
+                        @each(user in users)
+                        <option value="{{user.firstName}}">{{user.firstName}}</option>
+                        @endeach
+                       
+                    </select>
+                    <label for="source-currency">Source Currency</label>
+                    <select class="inputbox" name="source_currency" id="source-currency" required>
+                        <option value="">Source Currency</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="NGN">NGN</option>
+                    </select>
+                    <label for="destination_currency">Destination Currency</label>
+                    <select class="inputbox" name="destination_currency" id="destination-currency" required>
+                        <option value="">Destination Currency</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="NGN">NGN</option>
+                    </select>
+                       <label for="amount">Enter Amount</label>
+                        <input type="number" class="inputbox" name="amount" id="amount" required />
+                    
+                    <button type="submit" class="button"><a href="/dashboard">Send Now</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+
+</body>
+
+</html>

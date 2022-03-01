@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/hnet.com-image.ico">
+    <link rel="stylesheet" media="screen" href="/css/dashboard.css">
+    <title>Quick Cash | Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Quick Cash App</h1>
+        <label class="dropdown">
+        
+            <div class="dd-button">
+                {{firstName}}
+            </div>
+        
+            <input type="checkbox" class="dd-input" id="test">
+        
+            <ul class="dd-menu">
+                <li>{{email}}</li>
+                <li class="divider"></li>
+                <li>
+                    <a href="./auth/logout">Log Out</a>
+                </li>
+            </ul>
+        
+        </label>
+    </header>
+    <div class="card-body">
+        <div class="card-container">
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h3>${{account.usd}}</h3>
+                        <p>USD account balance</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h3>€{{account.eur}}</h3>
+                        <p>EUR account balance</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h3>₦{{account.ngn}}</h3>
+                        <p>NGN account balance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sub-title">
+            <h2>Transactions</h2>
+            <button class="new-transaction"><a href="/dashboard/transaction" id="new_tran">Create a New Transaction</a></button>
+        </div>
+        <div class="table-content">
+            <table class="rwd-table">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Value</th>
+                        <th>Currency</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                  @each(transaction in transactions) 
+                  <tr>
+                    <td>
+                       {{transaction.transactionId}}
+                    </td>
+                    <td>
+                       {{ transaction.from}}
+                    </td>
+                    <td>
+                        {{transaction.to}}
+                    </td>
+                    <td>
+                       {{transaction.value}}
+                    </td>
+                    <td>
+                       {{ transaction.currency}}
+                    </td>
+                    <td>
+                        {{transaction.createdAt.toString()}}
+                    </td>
+                    <td>
+                        {{transaction.updatedAt.toString()}}
+                    </td>
+                </tr>
+                  @endeach
+                    
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+    <footer></footer>
+    
+</body>
+</html>
