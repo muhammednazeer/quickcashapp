@@ -79,7 +79,7 @@
                   @each(transaction in transactions) 
                   <tr>
                     <td>
-                       {{transaction.transactionId}}
+                       {{transaction._id}}
                     </td>
                     <td>
                        {{ transaction.from}}
@@ -94,10 +94,10 @@
                        {{ transaction.currency}}
                     </td>
                     <td>
-                        {{transaction.createdAt.toString()}}
+                        {{transaction.createdAt.toDateString()}}
                     </td>
                     <td>
-                        {{transaction.updatedAt.toString()}}
+                        {{transaction.updatedAt.toDateString()}}
                     </td>
                 </tr>
                   @endeach
