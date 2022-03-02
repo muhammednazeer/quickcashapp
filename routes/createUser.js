@@ -1,6 +1,6 @@
 const createUserRoute = require('express').Router();
 const User = require('../model/User');
-const { registerValidation} = require('../middleware/validation');
+const { registerValidation } = require('../middleware/validation');
 const bcrypt = require('bcryptjs');
 
 
@@ -10,7 +10,7 @@ createUserRoute.post('/register', async (req, res) => {
     //Validate before creating a User
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-
+        
     //Checking if the user already exist
     const emailExist = await User.findOne({ email: req.body.email });
     if (emailExist) return res.status(400).send('Email already exists');
@@ -32,25 +32,25 @@ createUserRoute.post('/register', async (req, res) => {
             eur: 0,
             ngn: 0
         },
-        transactions:[ {
-            
+        transactions: [{
+
             from: 'initial transaction',
-                
+
             to: req.body.firstName,
-                
+
             value: initialTrasaction,
-               
+
             currency: 'USD'
 
         }]
     });
-    
+
     try {
         await user.save();
         res.redirect('/');
     } catch (error) {
         console.error('abort transaction');
-        
+
 
     }
 });
