@@ -61,23 +61,12 @@ app.use('/user', newUserRoute); //User Registration Middleware
 app.use('/',  dashboardRoute); //Dashboard Route
 app.use('/',  transactionRoute); //New Transaction Middleware
 app.use('/auth', logoutRoute); //Registration View
-//app.use('/transaction', verifyAuth, newTransactionRoute);
-app.use('/', newTransactionRoute); //Login View 
+app.use('/', verifyAuth, newTransactionRoute); //Login View 
 
 
 
 
 
-
-
-
-
-// Automatically sets view engine and adds dot notation to app.render
-
-
-
-
-//Routes Middlewares
 
 
 app.listen(PORT, () => {
