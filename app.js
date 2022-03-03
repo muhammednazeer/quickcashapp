@@ -9,7 +9,7 @@ const app = express();
 const { config, engine } = require('express-edge');
 dotenv.config();
 //Connect to DB
-mongoose.connect(process.env.DB_CONNECT,
+mongoose.connect(process.env.DB_CONNECTION,
     { useNewUrlParser: true },
     () => { console.log("Connected to db!"); });
 
@@ -19,7 +19,7 @@ app.use(expressSession({
     resave: true,
     saveUninitialized: true,
     store: mongoStore.create({
-        mongoUrl: process.env.DB_CONNECT
+        mongoUrl: process.env.DB_CONNECTION
     })
 }))
 
@@ -50,16 +50,19 @@ const loginRoute = require('./routes/login');
 const transactionRoute = require('./routes/transactions');
 const newUserRoute = require('./routes/createUser');
 const logoutRoute = require('./routes/logout');
-const newTransactionRoute = require('./routes/newTransaction');
+//const newTransactionRoute = require('./routes/newTransaction');
+const newTransactionRoute = require('./routes/transactionNew');
 //Route Middleware
-app.use('/', registrationRoute); //Registration View
+
 app.use('/', loginRoute); //Login View 
-app.use('/',  dashboardRoute); //Dashboard Route
-app.use('/dashboard', verifyAuth, transactionRoute); //New Transaction Middleware
 app.use('/user', authRoute); //User Login Middleware
+app.use('/', registrationRoute); //Registration View
 app.use('/user', newUserRoute); //User Registration Middleware
+app.use('/',  dashboardRoute); //Dashboard Route
+app.use('/',  transactionRoute); //New Transaction Middleware
 app.use('/auth', logoutRoute); //Registration View
-app.use('/transaction', newTransactionRoute);
+//app.use('/transaction', verifyAuth, newTransactionRoute);
+app.use('/', newTransactionRoute); //Login View 
 
 
 
