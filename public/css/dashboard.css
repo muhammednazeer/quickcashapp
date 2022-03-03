@@ -270,7 +270,7 @@ h2{
 
 .card-body .card-container .card {
     position: relative;
-    min-width: 320px;
+    min-width: 360px;
     height: 220px;
     
     border-radius: 15px;
@@ -305,7 +305,7 @@ h2{
 
  .content h3 {
    
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: black;
 }
 
