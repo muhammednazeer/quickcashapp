@@ -1,13 +1,13 @@
 {
   "name": "quick_cash_app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "money transfer app",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Muhammed Nazeer Hussaini",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
