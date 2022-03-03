@@ -13,16 +13,37 @@
 
 <body>
     <div class="mainscreen">
+        <div class="transaction-header">
+            <label class="dropdown">
+            
+                <div class="dd-button">
+                    {{loginUser}}
+                </div>
+            
+                <input type="checkbox" class="dd-input" id="test">
+            
+                <ul class="dd-menu">
+                    <li>{{email}}</li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="./auth/logout">Log Out</a>
+                    </li>
+                </ul>
+            
+            </label>
+
+        </div>
+       
         
         <div class="card">
             <div class="leftside">
                 <h1>Quick Cash App</h1>
             </div>
             <div class="rightside">
-                <form action="/transaction/new" method="POST">
+                <form action="/new" method="POST">
                     <h2>New Transaction</h2>
                     <label for="sender">Sender's Name</label>
-                    <input type="text" class="inputbox" name="sender" value="{{firstName}}" readonly />
+                    <input type="text" class="inputbox" name="sender" value="{{loginUser}}" readonly />
                     <label for="receiver">Select Receiver</label>
                     <select class="inputbox" name="receiver" id="receiver" required>
                         <option value="">Select Name</option>
@@ -48,7 +69,7 @@
                        <label for="amount">Enter Amount</label>
                         <input type="number" class="inputbox" name="amount" id="amount" required />
                     
-                    <button type="submit" class="button"><a href="/dashboard">Send Now</a></button>
+                    <button type="submit" class="button a">Send Now</a></button>
                 </form>
             </div>
         </div>

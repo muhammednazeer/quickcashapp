@@ -62,7 +62,7 @@
     <div class="container">
         <div class="sub-title">
             <h2>Transactions</h2>
-            <button class="new-transaction"><a href="/dashboard/transaction" id="new_tran">Create a New Transaction</a></button>
+            <button class="new-transaction"><a href="/transaction" id="new_tran">Create a New Transaction</a></button>
         </div>
         <div class="table-content">
             <table class="rwd-table">
@@ -94,10 +94,10 @@
                        {{ transaction.currency}}
                     </td>
                     <td>
-                        {{transaction.createdAt.toDateString()}}
+                        {{transaction.createdAt.toUTCString()}}
                     </td>
                     <td>
-                        {{transaction.updatedAt.toDateString()}}
+                        {{transaction.updatedAt.toUTCString()}}
                     </td>
                 </tr>
                   @endeach
