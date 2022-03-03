@@ -3,12 +3,9 @@ const User = require('../model/User');
 
 //New Transaction Route
 transactionRoute.get('/transaction', async (req, res) => {
-    const receiver = req.body.sender;
-    console.log(receiver);
     const allUsers = await User.find({});
-    const loginUser = allUsers.filter((user) => {
-        return user._id.toString() == req.session.userId;
-    });
+    const loginUser = req.session.firstName;
+    const email = req.session.email;
 
     const users = allUsers.filter((user) => {
         return user._id.toString() != req.session.userId;
@@ -18,8 +15,9 @@ transactionRoute.get('/transaction', async (req, res) => {
     if (!loginUser) {
         return res.redirect('/');
     }
-    const [{ firstName }] = loginUser;
-    res.render('transaction', { users, firstName });
+    console.log(req.session.firstName);
+    //const [{ firstName }] = loginUser;
+    res.render('transaction', { users, loginUser, email });
 
 });
 
