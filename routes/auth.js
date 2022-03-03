@@ -21,6 +21,8 @@ authRoute.post('/login', async (req, res) => {
 
     //Create a session token
     req.session.userId = user._id
+    req.session.firstName = user.firstName
+    req.session.email = user.email
     res.redirect('/dashboard');
 
 });
